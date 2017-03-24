@@ -1,6 +1,6 @@
 {
   "name": "xcloud",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Initialize an xcloud project",
   "main": "index.js",
   "author": "Alexander Cohen",
@@ -16,5 +16,16 @@
   },
   "bin": {
     "xcloud": "./index.js"
+  },
+  "repository": "https://github.com/naftaly/xcloud-cli.git",
+  "contributors": [],
+  "bugs": {
+    "email": "naftaly@me.com"
+  },
+  "keywords": [],
+  "homepage": "https://gramoryapp.com",
+  "engines": {
+    "node" : ">=6.9.1",
+    "npm" : ">=3.10.8"
   }
 }
