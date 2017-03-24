@@ -2,7 +2,6 @@
 
 'use strict';
 
-const program = require('commander-plus');
 const colors = require('colors');
 const path = require('path');
 const fs = require('fs');
@@ -10,6 +9,7 @@ const spawn = require('child_process').spawn;
 const _ = require('underscore');
 const firebase = require('firebase-tools');
 const rp = require('request-promise-native');
+const argv = require('minimist')(process.argv.slice(2));
 
 const cwd = process.cwd();
 
@@ -19,16 +19,28 @@ var App = {
     loginData: null
 };
 
+if ( argv._ && argv._.length > 0 ) {
+
+    const cmd = argv._[0];
+    if ( cmd == 'init') {
+        configureApp( argv.p, argv.c, argv.e );
+    }
+
+}
+return;
+
+/*
 program
     .version('0.0.1')
     .command('init')
     .option('-p, --project', 'project folder')
     .option('-c, --config', 'config file')
     .option('-e, --env', 'env to do')
-    .action((p, c, e) => {
+    .action( (p, c, e) => {
         configureApp(p, c, e);
     });
 program.parse(process.argv);
+*/
 
 function runCommand(cmd, args, wd) {
 
@@ -179,31 +191,19 @@ function ParseConfig(xcloudConfig) {
 function configureApp(p, c, e) {
 
     App.env = _.isString(e) ? e : null;
-    /*
-    firebase.functions.config.get('xcloud',{
-        project: 'function-test-e9661',
-        token: t
-    })
-    .then( data => {
-        console.log(data);
-    })
-    .catch( err => {
-        console.log(err);
-    });
-    return;
-    */
-    /*
-    firebase.list({
-        token: t
-    })
-    .then( data => {
-        console.log(data);
-    })
-    .catch( err => {
-        console.log(err);
-    });
-    return;
-    */
+
+    var createdP = false;
+    if ( !p ) {
+        p = process.cwd();
+        createdP = true;
+    }
+
+    if ( !c ) {
+        c = pathFromSourcePath(p + '/xconfig/xcloud.config.j');
+        if ( !c && createdP ) {
+            p = null;
+        }
+    }
 
     Promise.resolve()
 
