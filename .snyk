@@ -1,0 +1,24 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.7.0
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  'npm:ms:20170412':
+    - firebase-tools > jsonwebtoken > ms:
+        patched: '2017-05-24T00:04:08.272Z'
+    - firebase-tools > @google-cloud/functions-emulator > body-parser > debug > ms:
+        patched: '2017-05-24T00:04:08.272Z'
+    - firebase-tools > @google-cloud/functions-emulator > express > debug > ms:
+        patched: '2017-05-24T00:04:08.272Z'
+    - firebase-tools > @google-cloud/functions-emulator > express > send > debug > ms:
+        patched: '2017-05-24T00:04:08.272Z'
+    - firebase-tools > @google-cloud/functions-emulator > express > serve-static > send > debug > ms:
+        patched: '2017-05-24T00:04:08.272Z'
+    - firebase-tools > superstatic > morgan > debug > ms:
+        patched: '2017-05-24T00:04:08.272Z'
+    - firebase-tools > @google-cloud/functions-emulator > express > send > ms:
+        patched: '2017-05-24T00:04:08.272Z'
+    - firebase-tools > @google-cloud/functions-emulator > express > serve-static > send > ms:
+        patched: '2017-05-24T00:04:08.272Z'
+    - firebase-tools > superstatic > compression > debug > ms:
+        patched: '2017-05-24T00:04:08.272Z'
